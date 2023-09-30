@@ -1,5 +1,3 @@
-import { Ruler } from "lucide-react";
-
 const schema = {
   name: "resource",
   title: "Resource",
@@ -10,7 +8,7 @@ const schema = {
       title: "Title",
       type: "string",
       require,
-      validation: (Ruler: any) => Ruler.required(),
+      validation: (Rule: any) => Rule.required(),
     },
     { name: "slug", title: "Slug", type: "slug", options: { source: "title" } },
     {
