@@ -6,13 +6,19 @@ import { getResources } from "@/sanity/actions";
 
 export const revalidate = 900;
 
-const Page = async () => {
+interface Props {
+  searchParams: { [key: string]: string | undefined };
+}
+
+const Page = async ({ searchParams }: Props) => {
+  console.log(searchParams);
+
   const resources = await getResources({
     query: "",
     category: "",
     page: "1",
   });
-  console.log(resources);
+  // console.log(resources);
 
   return (
     <main className="flex-center paddings mx-auto w-full max-w-screen-2xl flex-col  ">
