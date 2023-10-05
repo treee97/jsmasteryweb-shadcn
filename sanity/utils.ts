@@ -10,7 +10,7 @@ interface BuildQueryParams {
 export function buildQuery(params: BuildQueryParams) {
   const { type, query, category, page = 1, perPage = 10 } = params;
 
-  const conditions = [`*[_type=="${type}"]`];
+  const conditions = [`*[_type=="${type}"`];
 
   if (query) {
     conditions.push(`title match "*${query}*"`);
@@ -28,9 +28,10 @@ export function buildQuery(params: BuildQueryParams) {
       .slice(1)
       .join(" && ")})][${offset}...${offset + limit}]`;
   } else {
-    return `${conditions[0]}[${offset}...${limit}]`;
+    return `${conditions[0]}][${offset}...${limit}]`;
   }
 }
+
 interface UrlQueryParams {
   params: string;
   key: string;
